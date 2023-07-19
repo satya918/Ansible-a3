@@ -1,8 +1,6 @@
 ---
 - name: Install Nginx
-  hosts: webservers  # Replace "servers" with the appropriate group name from your inventory
-
-  # Become root (sudo) on the remote servers to install packages
+  hosts: webservers
   become: yes
 
   tasks:
