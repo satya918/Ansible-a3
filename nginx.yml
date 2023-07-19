@@ -1,15 +1,15 @@
----
-- hosts: nginx_servers
-  become: true
+-
+  name: Install nginx and start it
+  hosts: servers
+  become: yes
   tasks:
-    - name: Install NGINX
+    - name: Install nginx
       apt:
         name: nginx
-        state: present
-      when: ansible_os_family == 'Debian'
-
-    - name: Start NGINX service
+        state: latest
+    - name: Start Nginx
       service:
         name: nginx
         state: started
         enabled: yes
+~                         
