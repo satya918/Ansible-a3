@@ -1,15 +1,27 @@
--
-  name: Install nginx and start it
-  hosts: servers
+---
+- name: Install Nginx
+  hosts: servers  # Replace "servers" with the appropriate group name from your inventory
+
+  # Become root (sudo) on the remote servers to install packages
   become: yes
+
   tasks:
     - name: Install nginx
+      # Use the appropriate package manager for your system (apt, yum, dnf, etc.)
+      # Adjust the state based on your requirement (present, latest, absent, etc.)
       apt:
         name: nginx
         state: latest
-    - name: Start Nginx
+      # Uncomment the below lines and use them if you're using a Red Hat based system (CentOS, RHEL)
+      # yum:
+      #   name: nginx
+      #   state: latest
+      # dnf:
+      #   name: nginx
+      #   state: latest
+
+    - name: Start Nginx service
       service:
         name: nginx
         state: started
         enabled: yes
-~                         
